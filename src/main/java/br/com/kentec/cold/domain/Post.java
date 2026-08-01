@@ -1,8 +1,9 @@
 package br.com.kentec.cold.domain;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Arrays;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,8 +25,9 @@ public class Post implements Serializable  {
 	@Column(name="id", nullable = false, length = 11)
 	private Long id;
 	
-	@Column(name="datePostagem", nullable = true, length = 10)
-    private LocalDateTime dataPostagem;
+	@Column(name="dataPostagem", nullable = true, length = 10)
+	@JsonFormat(pattern="yyyy-MM-dd")
+    private String dataPostagem;
 	
 	@Column(name="titulo", nullable = false, length = 256)
     private String titulo;
@@ -60,12 +62,12 @@ public class Post implements Serializable  {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public LocalDateTime getDataPostagem() {
+	
+	public String getDataPostagem() {
 		return dataPostagem;
 	}
 
-	public void setDataPostagem(LocalDateTime dataPostagem) {
+	public void setDataPostagem(String dataPostagem) {
 		this.dataPostagem = dataPostagem;
 	}
 
