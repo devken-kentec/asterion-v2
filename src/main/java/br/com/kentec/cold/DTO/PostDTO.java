@@ -3,23 +3,34 @@ package br.com.kentec.cold.DTO;
 import br.com.kentec.cold.domain.Post;
 
 public class PostDTO {
-	
 	private Long id;
 	private String dataPostagem;
 	private String titulo;
 	private String conteudo;
 	private String resumo;
-	private String foto;
+	private byte[] foto;
 	private Long autorId;
 	private String autorNome;
 	private Long tagId;
 	private String tagNome;
+	private String visibilidade;
 	private String  status;
 	
 	public PostDTO() {}
 	
 	public PostDTO(Post post) {
-		
+		this.id = post.getId();
+		this.dataPostagem = post.getDataPostagem();
+		this.titulo = post.getTitulo();
+		this.conteudo = post.getConteudo();
+		this.resumo = post.getResumo();
+		this.foto = post.getFoto();
+		this.autorId = post.getAutor().getId();
+		this.autorNome = post.getAutor().getMedium() +"/"+ post.getAutor().getGuia();
+		this.tagId = post.getTag().getId();
+		this.tagNome = post.getTag().getDescricao();
+		this.visibilidade = post.getVisibilidade();
+		this.status = post.getStatus();
 	}
 
 	public Long getId() {
@@ -62,11 +73,11 @@ public class PostDTO {
 		this.resumo = resumo;
 	}
 
-	public String getFoto() {
+	public byte[] getFoto() {
 		return foto;
 	}
 
-	public void setFoto(String foto) {
+	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
 
@@ -111,10 +122,19 @@ public class PostDTO {
 		this.status = status;
 	}
 
+	public String getVisibilidade() {
+		return visibilidade;
+	}
+
+	public void setVisibilidade(String visibilidade) {
+		this.visibilidade = visibilidade;
+	}
+
 	@Override
 	public String toString() {
 		return "PostDTO [id=" + id + ", dataPostagem=" + dataPostagem + ", titulo=" + titulo + ", conteudo=" + conteudo
 				+ ", resumo=" + resumo + ", foto=" + foto + ", autorId=" + autorId + ", autorNome=" + autorNome
-				+ ", tagId=" + tagId + ", tagNome=" + tagNome + ", status=" + status + "]";
+				+ ", tagId=" + tagId + ", tagNome=" + tagNome + ", visibilidade=" + visibilidade + ", status=" + status
+				+ "]";
 	}
 }

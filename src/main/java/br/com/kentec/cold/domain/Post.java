@@ -50,6 +50,9 @@ public class Post implements Serializable  {
 	@JoinColumn(name = "id_tag", nullable = true)
     private Tag tag = new Tag();
     
+    @Column(name="visibilidade", nullable = true, length = 10)
+	private String visibilidade;
+    
     @Column(name="status", nullable = true, length = 7)
 	private String status;
     
@@ -127,10 +130,18 @@ public class Post implements Serializable  {
 		this.tag = tag;
 	}
 
+	public String getVisibilidade() {
+		return visibilidade;
+	}
+
+	public void setVisibilidade(String visibilidade) {
+		this.visibilidade = visibilidade;
+	}
+
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", dataPostagem=" + dataPostagem + ", titulo=" + titulo + ", resumo=" + resumo
 				+ ", conteudo=" + conteudo + ", foto=" + Arrays.toString(foto) + ", autor=" + autor + ", tag=" + tag
-				+ ", status=" + status + "]";
+				+ ", visibilidade=" + visibilidade + ", status=" + status + "]";
 	}
 }
