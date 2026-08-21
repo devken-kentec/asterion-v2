@@ -34,6 +34,10 @@ public class PostService {
 		return pr.findAll().stream().map(PostDTO::new).collect(Collectors.toList());
 	}
 	
+	public List<PostDTO> listarTodosPorTag(String tag) {
+		return pr.listarTodosPorTag(tag).stream().map(PostDTO::new).collect(Collectors.toList());
+	}
+	
 	public void save(PostDTO postDTO) {
 		Optional<Autor> autor = ar.findById(postDTO.getAutorId());
 		Optional<Tag> tag = tr.findById(postDTO.getTagId());
@@ -47,5 +51,25 @@ public class PostService {
 		post.setVisibilidade(postDTO.getVisibilidade());
 		post.setStatus(postDTO.getStatus());
 		pr.save(post);
+	}
+	
+	public void update(PostDTO postDTO) {
+		Optional<Post> postUp = pr.findById(postDTO.getId());
+		if(postUp.isPresent()) {
+			Optional<Autor> autor = ar.findById(postDTO.getAutorId());
+			Optional<Tag> tag = tr.findById(postDTO.getTagId());
+			postUp.get().setId(postDTO.getId());
+			postUp.get().setTitulo(postDTO.getTitulo());
+			postUp.get().setResumo(postDTO.getResumo());
+			postUp.get().setDataPostagem(postDTO.getDataPostagem());
+			postUp.get().setConteudo(postDTO.getConteudo());
+			postUp.get().setAutor(autor.get());
+			postUp.get().setTag(tag.get());
+			postUp.get().setVisibilidade(postDTO.getVisibilidade());
+			postUp.get().setStatus(postDTO.getStatus());
+		}
+		
+		System.out.println(postUp.get());
+		pr.save(postUp.get());
 	}
 }
