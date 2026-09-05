@@ -1,13 +1,13 @@
-package br.com.kentec.cold;
+package br.com.kentec.asterion;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ColdApplication {
+public class AsterionApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ColdApplication.class, args);
+		SpringApplication.run(AsterionApplication.class, args);
 	}
 
 }

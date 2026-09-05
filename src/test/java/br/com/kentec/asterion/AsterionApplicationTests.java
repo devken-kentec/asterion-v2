@@ -1,10 +1,10 @@
-package br.com.kentec.cold;
+package br.com.kentec.asterion;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ColdApplicationTests {
+class AsterionApplicationTests {
 
 	@Test
 	void contextLoads() {

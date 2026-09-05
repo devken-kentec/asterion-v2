@@ -1,4 +1,4 @@
-package br.com.kentec.cold.domain;
+package br.com.kentec.asterion.domain;
 
 import java.io.Serializable;
 
@@ -10,24 +10,29 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="tag")
+@Table(name="descricao_receita")
 @SuppressWarnings("serial")
-public class Tag implements Serializable {
+public class DescricaoReceita implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id", nullable = false, length = 11)
 	private Long id;
 	
-	@Column(name="descricao", nullable = false, length = 32)
-    private String descricao;
-	
+	@Column(name="descricao", nullable = true, length = 256)
+	private String descricao;
+
 	@Column(name="status", nullable = true, length = 7)
 	private String status;
-	
-	public Tag() {
-		
+
+	public DescricaoReceita() {
 	}
+	
+	public DescricaoReceita(String descricao, String status) {
+		this.descricao = descricao;
+		this.status = status;
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -55,6 +60,6 @@ public class Tag implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Tag [id=" + id + ", descricao=" + descricao + ", status=" + status + "]";
+		return "DescricaoReceita [id=" + id + ", descricao=" + descricao + ", status=" + status + "]";
 	}
 }
