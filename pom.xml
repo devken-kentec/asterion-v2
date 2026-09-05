@@ -11,7 +11,7 @@
 	<groupId>br.com.kentec.asterion</groupId>
 	<artifactId>cold</artifactId>
 	<version>1.0.0-BETA</version>
-	<name>cold</name>
+	<name>asterion</name>
 	<description>Gerenciador Financeiro</description>
 	<url/>
 	<licenses>
