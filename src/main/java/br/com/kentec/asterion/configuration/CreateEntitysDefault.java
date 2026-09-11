@@ -24,7 +24,7 @@ import br.com.kentec.asterion.domain.Periodo;
 import br.com.kentec.asterion.domain.User;
 
 @Configuration
-@Profile("dev")
+@Profile("prod")
 public class CreateEntitysDefault {
 	
 	@Autowired
@@ -78,7 +78,10 @@ public class CreateEntitysDefault {
 					new DescricaoDespesa("Reparo e Manutenções", "Ativo"),
 					new DescricaoDespesa("Material de Expediente", "Ativo"),
 					new DescricaoDespesa("Transporte", "Ativo"),
-					new DescricaoDespesa("Assinaturas", "Ativo")
+					new DescricaoDespesa("Assinaturas", "Ativo"),
+					new DescricaoDespesa("Faculdade", "Ativo"),
+					new DescricaoDespesa("Refeição", "Ativo"),
+					new DescricaoDespesa("Diversão", "Ativo")
 			    );
 				ddr.saveAll(descricaoDespesas);
 			}	
@@ -111,8 +114,8 @@ public class CreateEntitysDefault {
 			long carteira = cr.count();
 			if(carteira == 0) {
 				List<Carteira> carteiras = Arrays.asList(
-					new Carteira("Caixa 01", "Ativo"),
-					new Carteira("22635-6", "Ativo"),
+					new Carteira("Itáu 65114-3", "Ativo"),
+					new Carteira("Santander 60010624-7", "Ativo"),
 					new Carteira("2521-9", "Ativo")
 			    );
 				cr.saveAll(carteiras);
