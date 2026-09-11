@@ -2,7 +2,6 @@ package br.com.kentec.asterion.configuration;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,22 +11,20 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.kentec.asterion.repository.CaixaRepository;
-import br.com.kentec.asterion.repository.ContaRepository;
+import br.com.kentec.asterion.repository.CarteiraRepository;
 import br.com.kentec.asterion.repository.DescricaoDespesaRepository;
 import br.com.kentec.asterion.repository.DescricaoReceitaRepository;
 import br.com.kentec.asterion.repository.PeriodoRepository;
 import br.com.kentec.asterion.repository.UserReposiroty;
 import br.com.kentec.asterion.util.Comum;
-import br.com.kentec.asterion.domain.Caixa;
-import br.com.kentec.asterion.domain.Conta;
+import br.com.kentec.asterion.domain.Carteira;
 import br.com.kentec.asterion.domain.DescricaoDespesa;
 import br.com.kentec.asterion.domain.DescricaoReceita;
 import br.com.kentec.asterion.domain.Periodo;
 import br.com.kentec.asterion.domain.User;
 
 @Configuration
-@Profile("prod")
+@Profile("dev")
 public class CreateEntitysDefault {
 	
 	@Autowired
@@ -43,10 +40,7 @@ public class CreateEntitysDefault {
 	private DescricaoReceitaRepository drr;
 	
 	@Autowired
-	private CaixaRepository cxr;
-	
-	@Autowired
-	private ContaRepository ctr;
+	private CarteiraRepository cr;
 	
 	@Bean
 	@Transactional
@@ -114,20 +108,15 @@ public class CreateEntitysDefault {
 				ur.save(user);
 			}
 			
-			Optional<User> user = ur.findById(1L);
-			
-			long caixas = cxr.count();
-			if(caixas == 0) {
-				Caixa caixa = new Caixa("Teste Desenvolvedor1", user.get(), "Ativo"); 
-				cxr.save(caixa);
-			}
-			
-			long contas = ctr.count();
-			if(contas == 0) {
-				Conta conta = new Conta("Teste Desenvolvedor1", user.get(), "Ativo"); 
-				ctr.save(conta);
-			}
-			
+			long carteira = cr.count();
+			if(carteira == 0) {
+				List<Carteira> carteiras = Arrays.asList(
+					new Carteira("Caixa 01", "Ativo"),
+					new Carteira("22635-6", "Ativo"),
+					new Carteira("2521-9", "Ativo")
+			    );
+				cr.saveAll(carteiras);
+			}	
 		};
 	}
 }

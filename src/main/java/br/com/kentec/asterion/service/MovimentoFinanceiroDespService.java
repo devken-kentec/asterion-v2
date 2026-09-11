@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.kentec.asterion.DTO.MovimentoFinanceiroDespDTO;
+import br.com.kentec.asterion.domain.Carteira;
 import br.com.kentec.asterion.domain.DescricaoDespesa;
 import br.com.kentec.asterion.domain.MovimentoFinanceiroDespesa;
 import br.com.kentec.asterion.domain.Periodo;
 import br.com.kentec.asterion.domain.User;
+import br.com.kentec.asterion.repository.CarteiraRepository;
 import br.com.kentec.asterion.repository.DescricaoDespesaRepository;
 import br.com.kentec.asterion.repository.MovimentoFinanceiroDespRepository;
 import br.com.kentec.asterion.repository.PeriodoRepository;
@@ -32,6 +34,9 @@ public class MovimentoFinanceiroDespService {
 	@Autowired
 	private MovimentoFinanceiroDespRepository mfdr;
 	
+	@Autowired
+	private CarteiraRepository cr;
+	
 	public List<MovimentoFinanceiroDespDTO> listarTodasDespesas(){
 		return mfdr.findAll().stream().map(MovimentoFinanceiroDespDTO::new).collect(Collectors.toList());
 	}
@@ -49,6 +54,9 @@ public class MovimentoFinanceiroDespService {
 		movFinDesp.setValor(movFin.getValor());
 		movFinDesp.setObservacao(movFin.getObservacao());
 		movFinDesp.setDespesa(movFin.getDespesa());
+		
+		Optional<Carteira> carteira = cr.findById(movFin.getCarteiraId());
+		movFinDesp.setCarteira(carteira.get());
 		
 		Optional<User> user = ur.findById(movFin.getUserId()); 
 		movFinDesp.setUser(user.get());

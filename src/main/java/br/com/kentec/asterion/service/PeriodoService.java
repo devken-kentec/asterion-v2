@@ -15,4 +15,12 @@ public class PeriodoService {
 	public Iterable<Periodo> periodoVigente(){
 		return pr.periodoVigente();
 	}
+	
+	public Iterable<Periodo> todosPeriodos(){
+		return pr.findAll();
+	}
+	
+	public void salvarPeriodo(Periodo periodo) {
+		pr.save(periodo);
+	}
 }

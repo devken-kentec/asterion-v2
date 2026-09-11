@@ -15,6 +15,7 @@ public class MovimentoFinanceiroRecDTO {
     private BigDecimal valor;
     private String observacao;
     private Boolean receita;
+    private Long carteiraId;
     private Long userId;
     private Long periodoId;
     private Long descricaoReceitaId;
@@ -34,6 +35,7 @@ public class MovimentoFinanceiroRecDTO {
     	this.valor = movFin.getValor();
     	this.observacao = movFin.getObservacao();
     	this.receita = movFin.getReceita();
+    	this.carteiraId = movFin.getCarteira().getId();
     	this.userId = movFin.getUser().getId();
     	this.periodoId = movFin.getPeriodo().getId();
     	this.descricaoReceitaId = movFin.getDescricaoReceita().getId();
@@ -152,13 +154,21 @@ public class MovimentoFinanceiroRecDTO {
 		this.descricaoReceita = descricaoReceita;
 	}
 
+	public Long getCarteiraId() {
+		return carteiraId;
+	}
+
+	public void setCarteiraId(Long carteiraId) {
+		this.carteiraId = carteiraId;
+	}
+
 	@Override
 	public String toString() {
 		return "MovimentoFinanceiroRecDTO [id=" + id + ", numeroDocumento=" + numeroDocumento + ", dataReceita="
 				+ dataReceita + ", dataRecebimento=" + dataRecebimento + ", statusRecebimento=" + statusRecebimento
 				+ ", tipoRecebimento=" + tipoRecebimento + ", formaRecebimento=" + formaRecebimento + ", valor=" + valor
-				+ ", observacao=" + observacao + ", receita=" + receita + ", userId=" + userId + ", periodoId="
-				+ periodoId + ", descricaoReceitaId=" + descricaoReceitaId + ", descricaoReceita=" + descricaoReceita
-				+ "]";
+				+ ", observacao=" + observacao + ", receita=" + receita + ", carteiraId=" + carteiraId + ", userId="
+				+ userId + ", periodoId=" + periodoId + ", descricaoReceitaId=" + descricaoReceitaId
+				+ ", descricaoReceita=" + descricaoReceita + "]";
 	}	
 }

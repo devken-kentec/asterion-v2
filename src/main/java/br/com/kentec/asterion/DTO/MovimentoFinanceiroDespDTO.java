@@ -16,6 +16,7 @@ public class MovimentoFinanceiroDespDTO {
     private BigDecimal valor;
     private String observacao;
     private Boolean despesa;
+    private Long carteiraId;
     private Long userId;
     private Long periodoId;
     private Long descricaoDespesaId;
@@ -34,6 +35,7 @@ public class MovimentoFinanceiroDespDTO {
     	this.valor = movFin.getValor();
     	this.observacao = movFin.getObservacao();
     	this.despesa = movFin.getDespesa();
+    	this.carteiraId = movFin.getCarteira().getId();
     	this.userId = movFin.getUser().getId();
     	this.periodoId = movFin.getPeriodo().getId();
     	this.descricaoDespesaId = movFin.getDescricaoDespesa().getId();
@@ -152,13 +154,21 @@ public class MovimentoFinanceiroDespDTO {
 		this.descricaoDespesa = descricaoDespesa;
 	}
 
+	public Long getCarteiraId() {
+		return carteiraId;
+	}
+
+	public void setCarteiraId(Long carteiraId) {
+		this.carteiraId = carteiraId;
+	}
+
 	@Override
 	public String toString() {
 		return "MovimentoFinanceiroDespDTO [id=" + id + ", numeroDocumento=" + numeroDocumento + ", dataDespesa="
 				+ dataDespesa + ", dataPagamento=" + dataPagamento + ", statusPagamento=" + statusPagamento
 				+ ", tipoPagamento=" + tipoPagamento + ", formaPagamento=" + formaPagamento + ", valor=" + valor
-				+ ", observacao=" + observacao + ", despesa=" + despesa + ", userId=" + userId + ", periodoId="
-				+ periodoId + ", descricaoDespesaId=" + descricaoDespesaId + ", descricaoDespesa=" + descricaoDespesa
-				+ "]";
+				+ ", observacao=" + observacao + ", despesa=" + despesa + ", carteiraId=" + carteiraId + ", userId="
+				+ userId + ", periodoId=" + periodoId + ", descricaoDespesaId=" + descricaoDespesaId
+				+ ", descricaoDespesa=" + descricaoDespesa + "]";
 	}
 }

@@ -54,6 +54,10 @@ public class MovimentoFinanceiroDespesa implements Serializable {
 	private Boolean despesa;
 	
 	@ManyToOne
+	@JoinColumn(name = "id_carteira", nullable = false)
+	private Carteira carteira = new Carteira();
+	
+	@ManyToOne
 	@JoinColumn(name = "id_user", nullable = false)
 	private User user = new User();
 	
@@ -173,13 +177,21 @@ public class MovimentoFinanceiroDespesa implements Serializable {
 		this.despesa = despesa;
 	}
 
+	public Carteira getCarteira() {
+		return carteira;
+	}
+
+	public void setCarteira(Carteira carteira) {
+		this.carteira = carteira;
+	}
+
 	@Override
 	public String toString() {
 		return "MovimentoFinanceiroDespesa [id=" + id + ", numeroDocumento=" + numeroDocumento + ", dataDespesa="
 				+ dataDespesa + ", dataPagamento=" + dataPagamento + ", statusPagamento=" + statusPagamento
 				+ ", tipoPagamento=" + tipoPagamento + ", formaPagamento=" + formaPagamento + ", valor=" + valor
-				+ ", observacao=" + observacao + ", despesa=" + despesa + ", user=" + user + ", periodo=" + periodo
-				+ ", descricaoDespesa=" + descricaoDespesa + "]";
+				+ ", observacao=" + observacao + ", despesa=" + despesa + ", carteira=" + carteira + ", user=" + user
+				+ ", periodo=" + periodo + ", descricaoDespesa=" + descricaoDespesa + "]";
 	}
 }
 
