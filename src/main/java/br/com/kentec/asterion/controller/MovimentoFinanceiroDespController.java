@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,10 +31,20 @@ public class MovimentoFinanceiroDespController {
 		return ResponseEntity.ok(mfds.listarTodasDespesas());      
 	}
 	
+	@GetMapping("/buscarDespesa")
+	public ResponseEntity<List<MovimentoFinanceiroDespDTO>> pesquisaAvancada(
+							@RequestParam(value="dataInicial", required = false, defaultValue="") String dataInicial, 
+							@RequestParam(value="dataFinal", required = false, defaultValue = "") String dataFinal 
+																			){
+		return ResponseEntity.ok(mfds.buscaAvancadaDespesa(dataInicial, dataFinal));
+	}
+	
 	@PostMapping("/despesa")
 	@ResponseStatus(HttpStatus.CREATED)
 	public MovimentoFinanceiroDespesa cadastrar(@RequestBody MovimentoFinanceiroDespDTO movimentoFinanceiroDTO) {
 		return mfds.salvarDespesa(movimentoFinanceiroDTO);
 	}
+	
+
 
 }

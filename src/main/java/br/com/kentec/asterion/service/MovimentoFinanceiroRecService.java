@@ -70,5 +70,9 @@ public class MovimentoFinanceiroRecService {
 		var retornoReceita = mfrr.save(movFinRec);
 		return retornoReceita;
 	}
+	
+	public List<MovimentoFinanceiroRecDTO> buscaAvancadaReceita(String dataInicial, String dataFinal) {
+		return mfrr.buscaAvancadaReceita(dataInicial, dataFinal).stream().map(MovimentoFinanceiroRecDTO::new).collect(Collectors.toList());
+	}
 
 }

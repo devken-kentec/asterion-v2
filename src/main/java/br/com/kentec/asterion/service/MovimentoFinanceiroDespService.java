@@ -70,4 +70,8 @@ public class MovimentoFinanceiroDespService {
 		var retornoDespesa = mfdr.save(movFinDesp);
 		return retornoDespesa;
 	}
+	
+	public List<MovimentoFinanceiroDespDTO> buscaAvancadaDespesa(String dataInicial, String dataFinal) {
+		return mfdr.buscaAvancadaDespesa(dataInicial, dataFinal).stream().map(MovimentoFinanceiroDespDTO::new).collect(Collectors.toList());
+	}
 }
