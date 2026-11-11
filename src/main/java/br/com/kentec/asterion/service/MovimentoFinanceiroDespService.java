@@ -46,6 +46,7 @@ public class MovimentoFinanceiroDespService {
 		MovimentoFinanceiroDespesa movFinDesp = new MovimentoFinanceiroDespesa();
 		
 		movFinDesp.setNumeroDocumento(movFin.getNumeroDocumento());
+		movFinDesp.setDestino(movFin.getDestino());
 		movFinDesp.setDataDespesa(movFin.getDataDespesa());
 		movFinDesp.setDataPagamento(movFin.getDataPagamento());
 		movFinDesp.setStatusPagamento(movFin.getStatusPagamento());

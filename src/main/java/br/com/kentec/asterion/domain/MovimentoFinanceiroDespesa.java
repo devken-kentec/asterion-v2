@@ -27,6 +27,9 @@ public class MovimentoFinanceiroDespesa implements Serializable {
 	@Column(name="numero_documento", nullable = true, length = 32)
 	private String numeroDocumento;
 	
+	@Column(name="destino", nullable = true, length = 10)
+	private String destino;
+	
 	@Column(name="data_despesa", nullable = true, length = 10)
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private String dataDespesa;
@@ -185,13 +188,21 @@ public class MovimentoFinanceiroDespesa implements Serializable {
 		this.carteira = carteira;
 	}
 
+	public String getDestino() {
+		return destino;
+	}
+
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
+
 	@Override
 	public String toString() {
-		return "MovimentoFinanceiroDespesa [id=" + id + ", numeroDocumento=" + numeroDocumento + ", dataDespesa="
-				+ dataDespesa + ", dataPagamento=" + dataPagamento + ", statusPagamento=" + statusPagamento
-				+ ", tipoPagamento=" + tipoPagamento + ", formaPagamento=" + formaPagamento + ", valor=" + valor
-				+ ", observacao=" + observacao + ", despesa=" + despesa + ", carteira=" + carteira + ", user=" + user
-				+ ", periodo=" + periodo + ", descricaoDespesa=" + descricaoDespesa + "]";
+		return "MovimentoFinanceiroDespesa [id=" + id + ", numeroDocumento=" + numeroDocumento + ", destino=" + destino
+				+ ", dataDespesa=" + dataDespesa + ", dataPagamento=" + dataPagamento + ", statusPagamento="
+				+ statusPagamento + ", tipoPagamento=" + tipoPagamento + ", formaPagamento=" + formaPagamento
+				+ ", valor=" + valor + ", observacao=" + observacao + ", despesa=" + despesa + ", carteira=" + carteira
+				+ ", user=" + user + ", periodo=" + periodo + ", descricaoDespesa=" + descricaoDespesa + "]";
 	}
 }
 

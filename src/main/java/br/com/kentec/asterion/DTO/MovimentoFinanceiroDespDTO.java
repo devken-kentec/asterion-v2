@@ -8,6 +8,7 @@ public class MovimentoFinanceiroDespDTO {
 	
     private Long id;
     private String numeroDocumento;
+    private String destino;
     private String dataDespesa;
     private String dataPagamento;
     private String statusPagamento;
@@ -27,6 +28,7 @@ public class MovimentoFinanceiroDespDTO {
     public MovimentoFinanceiroDespDTO(MovimentoFinanceiroDespesa movFin) {
     	this.id = movFin.getId();
     	this.numeroDocumento = movFin.getNumeroDocumento();
+    	this.destino = movFin.getDestino();
     	this.dataDespesa = movFin.getDataDespesa();
     	this.dataPagamento = movFin.getDataPagamento();
     	this.statusPagamento = movFin.getStatusPagamento();
@@ -160,6 +162,14 @@ public class MovimentoFinanceiroDespDTO {
 
 	public void setCarteiraId(Long carteiraId) {
 		this.carteiraId = carteiraId;
+	}
+
+	public String getDestino() {
+		return destino;
+	}
+
+	public void setDestino(String destino) {
+		this.destino = destino;
 	}
 
 	@Override

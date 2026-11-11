@@ -24,7 +24,7 @@ import br.com.kentec.asterion.domain.Periodo;
 import br.com.kentec.asterion.domain.User;
 
 @Configuration
-@Profile("prod")
+@Profile("dev")
 public class CreateEntitysDefault {
 	
 	@Autowired
