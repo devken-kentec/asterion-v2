@@ -13,7 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="caixa" )
+@Table(name="caixa")
 @SuppressWarnings("serial")
 public class Caixa implements Serializable {
 	
